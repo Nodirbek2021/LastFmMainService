@@ -50,7 +50,7 @@ public class TokenGenerator {
 
     public static String generateToken(String username, String password, Integer roleId) {
         // Concatenate the components with a delimiter (, comma)
-        String tokenPayload = String.format("%s,%s,%s,%d", username, password, roleId, EXPIRATION_TIME_MS);
+        String tokenPayload = String.format("%s,%s,%s,%d", username, password, roleId, System.currentTimeMillis()+EXPIRATION_TIME_MS);
 
         // Encode the token payload using Base64
         String base64Token = Base64.getEncoder().encodeToString(tokenPayload.getBytes(StandardCharsets.UTF_8));
